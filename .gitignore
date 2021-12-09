@@ -1,0 +1,4 @@
+cookies.yml
+*__pycache__
+*notebooks/
+.vscode

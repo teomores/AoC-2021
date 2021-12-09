@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "aoc-2021"
+version = "0.1.0"
+description = "My solutions for the Advent of Code 2021."
+authors = ["teomores <mattemoresc@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.26.0"
+PyYAML = "^6.0"
+prettytable = "^2.4.0"
+
+[tool.poetry.dev-dependencies]
+poethepoet = "^0.11.0"
+
+[tool.poe.tasks]
+autoformat.sequence = [
+    {cmd = "black src"},
+]
+
+lint.sequence = [
+    {cmd = "black --check -v src"},
+]
+
+[tool.poe.tasks.solve]
+cmd = "python -m aoc_2021.days.day_$day"
+help = "Solve a particular day of the AoC 2021."
+
+[tool.poe.tasks.solve.args.day]
+help = "Puzzle day"
+default = "1"
+options = ["-d", "--day"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
